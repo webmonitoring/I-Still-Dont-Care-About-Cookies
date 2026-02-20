@@ -55,12 +55,22 @@ jobs:
         run: |
           git remote add upstream https://github.com/OhMyGuus/I-Still-Dont-Care-About-Cookies.git 2>/dev/null || true
           git fetch upstream master --tags --prune
-          if ! UPSTREAM_TAG=$(git describe --tags --abbrev=0 upstream/master 2>/dev/null); then
-            echo "Could not resolve a release tag from upstream/master."
+
+          UPSTREAM_TAG="$(
+            git for-each-ref \
+              --merged=upstream/master \
+              --sort=-version:refname \
+              --format='%(refname:lstrip=2)' \
+              refs/tags \
+            | grep -E '^[vV][0-9]+\.[0-9]+\.[0-9]+([-.].*)?$' \
+            | head -n1
+          )"
+          if [ -z "$UPSTREAM_TAG" ]; then
+            echo "Could not resolve a release-style tag from upstream/master."
             exit 1
           fi
 
-          UPSTREAM_VERSION="${UPSTREAM_TAG#v}"
+          UPSTREAM_VERSION="${UPSTREAM_TAG#[vV]}"
           PKG_VERSION="${{ steps.package.outputs.version }}"
           if [ "$PKG_VERSION" != "$UPSTREAM_TAG" ] && [ "$PKG_VERSION" != "$UPSTREAM_VERSION" ]; then
             echo "Package version ($PKG_VERSION) does not match latest upstream tag ($UPSTREAM_TAG)."

@@ -84,7 +84,19 @@ jobs:
           PATCH_BRANCH="${PATCH_BRANCH:-wm/patches}"
           ALLOW_PRERELEASE="${ALLOW_PRERELEASE:-false}"
 
-          latest_tag="$(git describe --tags --abbrev=0 "$UPSTREAM_REMOTE/$UPSTREAM_BRANCH")"
+          latest_tag="$(
+            git for-each-ref \
+              --merged="$UPSTREAM_REMOTE/$UPSTREAM_BRANCH" \
+              --sort=-version:refname \
+              --format='%(refname:lstrip=2)' \
+              refs/tags \
+            | grep -E '^[vV][0-9]+\.[0-9]+\.[0-9]+([-.].*)?$' \
+            | head -n1
+          )"
+          if [[ -z "$latest_tag" ]]; then
+            echo "Could not resolve a release-style tag from $UPSTREAM_REMOTE/$UPSTREAM_BRANCH."
+            exit 1
+          fi
           release_kind="stable"
 
           if [[ "$latest_tag" == *"-beta"* || "$latest_tag" == *"-rc"* || "$latest_tag" == *"-pre"* ]]; then
