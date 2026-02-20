@@ -1,0 +1,257 @@
+name: upstream_upgrade_pr
+
+on:
+  repository_dispatch:
+    types:
+      - upstream_release
+  workflow_dispatch:
+    inputs:
+      allow_prerelease:
+        description: Process beta/prerelease tags
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+      patch_branch:
+        description: Branch containing webmonitoring patches
+        required: false
+        default: wm/patches
+        type: string
+      resumeUrl:
+        description: Optional n8n resume URL callback
+        required: false
+        default: ""
+        type: string
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: webmonitoring-upstream-upgrade-pr
+  cancel-in-progress: false
+
+jobs:
+  upgrade:
+    permissions:
+      contents: write
+      issues: write
+    outputs:
+      latest_tag: ${{ steps.detect.outputs.latest_tag }}
+      release_kind: ${{ steps.detect.outputs.release_kind }}
+      patch_branch: ${{ steps.detect.outputs.patch_branch }}
+      should_continue: ${{ steps.detect.outputs.should_continue }}
+    runs-on: ubuntu-latest
+    env:
+      UPSTREAM_REMOTE: upstream
+      UPSTREAM_URL: https://github.com/OhMyGuus/I-Still-Dont-Care-About-Cookies.git
+      UPSTREAM_BRANCH: master
+      MAIN_BRANCH: main
+      PATCH_BRANCH: ${{ github.event.client_payload.patch_branch || github.event.inputs.patch_branch || 'wm/patches' }}
+      ALLOW_PRERELEASE: ${{ github.event.client_payload.allow_prerelease || github.event.inputs.allow_prerelease || 'false' }}
+      RESUME_URL: ${{ github.event.client_payload.resumeUrl || github.event.client_payload.resume_url || github.event.inputs.resumeUrl || '' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Fetch origin and upstream refs
+        run: |
+          git remote add "$UPSTREAM_REMOTE" "$UPSTREAM_URL" 2>/dev/null || true
+          git fetch origin --prune
+          git fetch "$UPSTREAM_REMOTE" --tags --prune
+
+      - name: Validate patch branch exists on origin
+        run: |
+          PATCH_BRANCH="${PATCH_BRANCH:-wm/patches}"
+          if ! git ls-remote --exit-code --heads origin "$PATCH_BRANCH" >/dev/null 2>&1; then
+            echo "Remote patch branch origin/$PATCH_BRANCH does not exist."
+            echo "Create it first (for example: git push -u origin $PATCH_BRANCH)."
+            exit 1
+          fi
+
+      - name: Detect latest upstream tag and type
+        id: detect
+        run: |
+          PATCH_BRANCH="${PATCH_BRANCH:-wm/patches}"
+          ALLOW_PRERELEASE="${ALLOW_PRERELEASE:-false}"
+
+          latest_tag="$(git describe --tags --abbrev=0 "$UPSTREAM_REMOTE/$UPSTREAM_BRANCH")"
+          release_kind="stable"
+
+          if [[ "$latest_tag" == *"-beta"* || "$latest_tag" == *"-rc"* || "$latest_tag" == *"-pre"* ]]; then
+            release_kind="beta"
+          fi
+
+          api_json="$(curl -fsSL -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/OhMyGuus/I-Still-Dont-Care-About-Cookies/releases/tags/$latest_tag" || true)"
+          api_prerelease="$(jq -r '.prerelease // empty' <<< "$api_json")"
+          if [[ "$api_prerelease" == "true" ]]; then
+            release_kind="beta"
+          elif [[ "$api_prerelease" == "false" ]]; then
+            release_kind="stable"
+          fi
+
+          if [[ "$release_kind" == "beta" && "$ALLOW_PRERELEASE" != "true" ]]; then
+            echo "Skipping beta tag $latest_tag because ALLOW_PRERELEASE=false"
+            echo "should_continue=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_continue=true" >> "$GITHUB_OUTPUT"
+          fi
+
+          echo "latest_tag=$latest_tag" >> "$GITHUB_OUTPUT"
+          echo "release_kind=$release_kind" >> "$GITHUB_OUTPUT"
+          echo "patch_branch=$PATCH_BRANCH" >> "$GITHUB_OUTPUT"
+
+      - name: Skip info
+        if: steps.detect.outputs.should_continue != 'true'
+        run: |
+          echo "No upgrade issue created."
+          echo "Latest upstream tag is ${{ steps.detect.outputs.latest_tag }} (${{ steps.detect.outputs.release_kind }})."
+
+      - name: Check if tag already processed
+        if: steps.detect.outputs.should_continue == 'true'
+        id: marker
+        run: |
+          marker_tag="ci/upstream-seen/${{ steps.detect.outputs.latest_tag }}"
+          if git ls-remote --exit-code --tags origin "refs/tags/$marker_tag" >/dev/null 2>&1; then
+            echo "already_processed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "already_processed=false" >> "$GITHUB_OUTPUT"
+          fi
+          echo "marker_tag=$marker_tag" >> "$GITHUB_OUTPUT"
+
+      - name: Exit when this tag is already processed
+        if: steps.detect.outputs.should_continue == 'true' && steps.marker.outputs.already_processed == 'true'
+        run: |
+          echo "Tag ${{ steps.detect.outputs.latest_tag }} was already processed. Nothing to do."
+
+      - name: Fast-forward main from upstream/master
+        if: steps.detect.outputs.should_continue == 'true' && steps.marker.outputs.already_processed != 'true'
+        run: |
+          if git ls-remote --exit-code --heads origin "$MAIN_BRANCH" >/dev/null 2>&1; then
+            git checkout -B "$MAIN_BRANCH" "origin/$MAIN_BRANCH"
+            before_sha="$(git rev-parse HEAD)"
+            git merge --ff-only "$UPSTREAM_REMOTE/$UPSTREAM_BRANCH"
+            after_sha="$(git rev-parse HEAD)"
+            if [[ "$before_sha" != "$after_sha" ]]; then
+              git push origin "$MAIN_BRANCH"
+              echo "Updated origin/$MAIN_BRANCH: $before_sha -> $after_sha"
+            else
+              echo "$MAIN_BRANCH already up to date."
+            fi
+          else
+            git checkout -B "$MAIN_BRANCH" "$UPSTREAM_REMOTE/$UPSTREAM_BRANCH"
+            git push -u origin "$MAIN_BRANCH"
+            echo "Created and pushed origin/$MAIN_BRANCH from $UPSTREAM_REMOTE/$UPSTREAM_BRANCH."
+          fi
+
+      - name: Check if integration issue is needed
+        if: steps.detect.outputs.should_continue == 'true' && steps.marker.outputs.already_processed != 'true'
+        id: issue_needed
+        run: |
+          patch_branch="${{ steps.detect.outputs.patch_branch }}"
+          ahead_count="$(git rev-list --count "origin/$patch_branch..$MAIN_BRANCH")"
+          if [[ "$ahead_count" -eq 0 ]]; then
+            echo "needed=false" >> "$GITHUB_OUTPUT"
+            echo "No new commits to integrate from $MAIN_BRANCH into $patch_branch."
+          else
+            echo "needed=true" >> "$GITHUB_OUTPUT"
+            echo "Found $ahead_count commit(s) to integrate from $MAIN_BRANCH into $patch_branch."
+          fi
+
+      - name: Open or update upgrade issue
+        if: steps.detect.outputs.should_continue == 'true' && steps.marker.outputs.already_processed != 'true' && steps.issue_needed.outputs.needed == 'true'
+        id: integration_issue
+        env:
+          GH_TOKEN: ${{ secrets.COPILOT_ASSIGN_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          patch_branch="${{ steps.detect.outputs.patch_branch }}"
+          latest_tag="${{ steps.detect.outputs.latest_tag }}"
+          release_kind="${{ steps.detect.outputs.release_kind }}"
+          repo="${{ github.repository }}"
+
+          title="Integrate upstream ISDCAC $latest_tag into $patch_branch"
+          body="$(printf '%s\n' \
+            "Automated upstream integration request." \
+            "" \
+            "- Upstream tag: \`$latest_tag\`" \
+            "- Release type: \`$release_kind\`" \
+            "- Source branch: \`$MAIN_BRANCH\`" \
+            "- Target branch: \`$patch_branch\`" \
+            "" \
+            "Current workflow state:" \
+            "- \`$MAIN_BRANCH\` was synced from \`$UPSTREAM_REMOTE/$UPSTREAM_BRANCH\`." \
+            "- New upstream commits are ready to be integrated into \`$patch_branch\`." \
+            "" \
+            "Goal:" \
+            "- Merge \`$MAIN_BRANCH\` into \`$patch_branch\` to bring upstream changes into our patched branch." \
+            "" \
+            "Required work:" \
+            "1. Merge \`$MAIN_BRANCH\` into \`$patch_branch\`." \
+            "2. Resolve any merge conflicts." \
+            "3. Ensure the branch is in a releasable state after conflict resolution." \
+            "" \
+            "This issue was opened by \`upstream_upgrade_pr.yml\`." \
+          )"
+
+          existing_issue="$(gh issue list \
+            --repo "$repo" \
+            --state open \
+            --search "$title in:title" \
+            --json number \
+            --jq '.[0].number')"
+
+          if [[ -n "$existing_issue" && "$existing_issue" != "null" ]]; then
+            gh issue edit "$existing_issue" --repo "$repo" --title "$title" --body "$body"
+            issue_number="$existing_issue"
+            issue_url="https://github.com/$repo/issues/$issue_number"
+            echo "Updated existing issue #$existing_issue"
+          else
+            issue_url="$(gh issue create --repo "$repo" --title "$title" --body "$body")"
+            issue_number="${issue_url##*/}"
+            echo "Created new upgrade issue: $issue_url"
+          fi
+          echo "issue_number=$issue_number" >> "$GITHUB_OUTPUT"
+          echo "issue_url=$issue_url" >> "$GITHUB_OUTPUT"
+
+      - name: Mark upstream tag as processed
+        if: steps.detect.outputs.should_continue == 'true' && steps.marker.outputs.already_processed != 'true'
+        run: |
+          marker_tag="${{ steps.marker.outputs.marker_tag }}"
+          git tag -a "$marker_tag" -m "Processed upstream tag ${{ steps.detect.outputs.latest_tag }}"
+          git push origin "refs/tags/$marker_tag"
+
+      - name: Resume n8n callback
+        if: always() && env.RESUME_URL != ''
+        run: |
+          status="completed"
+          if [[ "${{ steps.detect.outputs.should_continue }}" != "true" ]]; then
+            status="skipped_prerelease"
+          elif [[ "${{ steps.marker.outputs.already_processed }}" == "true" ]]; then
+            status="already_processed"
+          elif [[ "${{ steps.issue_needed.outputs.needed }}" != "true" ]]; then
+            status="no_integration_needed"
+          fi
+
+          payload="$(jq -nc \
+            --arg status "$status" \
+            --arg latest_tag "${{ steps.detect.outputs.latest_tag }}" \
+            --arg release_kind "${{ steps.detect.outputs.release_kind }}" \
+            --arg patch_branch "${{ steps.detect.outputs.patch_branch }}" \
+            --arg issue_number "${{ steps.integration_issue.outputs.issue_number }}" \
+            --arg issue_url "${{ steps.integration_issue.outputs.issue_url }}" \
+            '{status:$status,latest_tag:$latest_tag,release_kind:$release_kind,patch_branch:$patch_branch,issue_number:$issue_number,issue_url:$issue_url}')"
+
+          curl -fsSL -X POST \
+            -H "content-type: application/json" \
+            --data "$payload" \
+            "$RESUME_URL"

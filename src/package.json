@@ -1,0 +1,25 @@
+{
+  "name": "@webmonitoring/i-still-dont-care-about-cookies-chromium",
+  "version": "1.1.9",
+  "description": "Packaged Chromium build of I Still Don't Care About Cookies",
+  "license": "GPL-3.0",
+  "private": false,
+  "main": "index.js",
+  "scripts": {
+    "sync-version": "node ../webmonitoring/scripts/sync-chromium-package-version.mjs",
+    "prepublishOnly": "npm run sync-version"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./manifest": "./manifest_v3.json",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webmonitoring/I-Still-Dont-Care-About-Cookies.git",
+    "directory": "src"
+  }
+}

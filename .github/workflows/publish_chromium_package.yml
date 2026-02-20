@@ -1,0 +1,87 @@
+name: publish_chromium_package
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - wm/patches
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (
+        github.event.pull_request.merged == true &&
+        github.event.pull_request.base.ref == 'wm/patches' &&
+        (
+          github.event.pull_request.head.ref == 'main' ||
+          github.event.pull_request.head.ref == 'master'
+        ) &&
+        github.event.pull_request.head.repo.full_name == github.repository
+      )
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://npm.pkg.github.com/
+          scope: "@webmonitoring"
+
+      - name: Sync package version from src manifest
+        run: node webmonitoring/scripts/sync-chromium-package-version.mjs
+
+      - name: Read package coordinates
+        id: package
+        run: |
+          NAME=$(node -e "const p=require('./src/package.json'); process.stdout.write(p.name)")
+          VERSION=$(node -e "const p=require('./src/package.json'); process.stdout.write(p.version)")
+          echo "package_name=$NAME" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Resolved package: $NAME@$VERSION"
+
+      - name: Validate version equals upstream tag
+        run: |
+          git remote add upstream https://github.com/OhMyGuus/I-Still-Dont-Care-About-Cookies.git 2>/dev/null || true
+          git fetch upstream master --tags --prune
+          if ! UPSTREAM_TAG=$(git describe --tags --abbrev=0 upstream/master 2>/dev/null); then
+            echo "Could not resolve a release tag from upstream/master."
+            exit 1
+          fi
+
+          UPSTREAM_VERSION="${UPSTREAM_TAG#v}"
+          PKG_VERSION="${{ steps.package.outputs.version }}"
+          if [ "$PKG_VERSION" != "$UPSTREAM_TAG" ] && [ "$PKG_VERSION" != "$UPSTREAM_VERSION" ]; then
+            echo "Package version ($PKG_VERSION) does not match latest upstream tag ($UPSTREAM_TAG)."
+            exit 1
+          fi
+          echo "Version matches upstream tag: $UPSTREAM_TAG"
+
+      - name: Check if version already exists
+        id: exists
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if npm view "${{ steps.package.outputs.package_name }}@${{ steps.package.outputs.version }}" version --registry=https://npm.pkg.github.com/ >/dev/null 2>&1; then
+            echo "already_published=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "already_published=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish package
+        if: steps.exists.outputs.already_published != 'true'
+        working-directory: src
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm publish --registry=https://npm.pkg.github.com/
