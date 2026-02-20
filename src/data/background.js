@@ -506,6 +506,9 @@ function doTheMagic(tabId, frameId, anotherTry) {
         return;
       }
 
+      // Inject CSS into DOM so it's saved with the page
+      executeScript({ tabId, frameId, file: "/data/js/injectCssToDom.js" });
+
       // Common social embeds
       executeScript({ tabId, frameId, file: "/data/js/embedsHandler.js" });
 

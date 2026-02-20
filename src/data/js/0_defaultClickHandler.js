@@ -34,6 +34,101 @@
       ".sp_choice_type_13",
     ],
 
+    // Age verification popups - check for containers with age-related content
+    'div[class*="age-verif"]:not([style*="none"])': [
+      'button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"])',
+    ],
+    'div[id*="age-verif"]:not([style*="none"])': [
+      'button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"])',
+    ],
+    'div[class*="age-gate"]:not([style*="none"])': [
+      'button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"])',
+    ],
+    'div[id*="age-gate"]:not([style*="none"])': [
+      'button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"])',
+    ],
+    'div[class*="age-popup"]:not([style*="none"])': [
+      'button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"])',
+    ],
+    'div[id*="age-popup"]:not([style*="none"])': [
+      'button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"])',
+    ],
+    'div[class*="age-modal"]:not([style*="none"])': [
+      'button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"])',
+    ],
+    'div[id*="age-modal"]:not([style*="none"])': [
+      'button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"])',
+    ],
+    'div[class*="age-check"]:not([style*="none"])': [
+      'button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"])',
+    ],
+    'div[id*="age-check"]:not([style*="none"])': [
+      'button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"])',
+    ],
+    'div[class*="age-confirm"]:not([style*="none"])': [
+      'button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"])',
+    ],
+    'div[id*="age-confirm"]:not([style*="none"])': [
+      'button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"])',
+    ],
+    'div[class*="age-dialog"]:not([style*="none"])': [
+      'button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"])',
+    ],
+    'div[id*="age-dialog"]:not([style*="none"])': [
+      'button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"])',
+    ],
+    'div[class*="age-preview"]:not([style*="none"])': [
+      'button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"])',
+    ],
+    'div[id*="age-preview"]:not([style*="none"])': [
+      'button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"])',
+    ],
+    'div.ets_av_content_popup:not([style*="none"])': [
+        '.btn.ets_av_submit',
+    ],
+    '.age-verify-popup:not([style*="none"])': [
+      '.primary',
+    ],
+    '#ageVerification': [
+      'button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"])',
+    ],
+    '.mfp-wrap.mfp-ready:has(#modal-setari-scripturi-gdpr)': [
+      '#gdpr-salveaza-setari-scripturi',
+    ],
+    '.consent-modal[data-state="open"]': [
+      '.btn.btn-orange',
+    ],
+    '.agecheck-box:not([style*="none"])': [
+      '.age-yes',
+    ],
+    '#popup_modal:not([style*="none"])': [
+      '#popup_button',
+    ],
+    '#av-overlay-wrap:not([style*="none"])': [
+      "#av_submit_form",
+    ],
+    '#NewsletterModal:not([style*="none"])': [
+      ".button--close",
+    ],
+    '#agl_wrapper:not([style*="none"])': [
+      '#agl_yes_button',
+    ],
+    '#modals-modal:not([style*="none"])': [
+      'button[\\@click="approveEntry"]',
+    ],
+    '.avwp-av:not([style*="none"])': [
+      "button.yes",
+    ],
+    '#goodav-app:not([style*="none"])': [
+      ".verification_btn_accept",
+    ],
+    'div[class*="testAgeGate"]:not([style*="none"])': [
+      "#age-confirmation",
+    ],
+    '.needsclick:not([style*="none"])': [
+      "button.needsclick",
+    ],
+
     ".mfp-wrap.mfp-ready": [
       ".cookiebanner-section .js-banner-button-confirm-selection",
       ".cookieselection-confirm-selection",
@@ -502,7 +597,23 @@
 		.disable--interaction .cm__btn[data-role=necessary],\
 		div[consent-skip-blocker] dialog[open] a[role="button"]:not([id$="-ext-0-255"]):not([class*="ext-1-414"]),\
 		div.consents .consents__wrapper .consents__modal .consents__buttons .js__accept-necessary,\
-		.wcc-consent-container .wcc-btn-reject',
+		.wcc-consent-container .wcc-btn-reject,\
+		div[class*="age-gate"]:not([style*="none"]) button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"]),\
+		div[id*="age-gate"]:not([style*="none"]) button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"]),\
+		div[class*="age-verif"]:not([style*="none"]) button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"]),\
+		div[id*="age-verif"]:not([style*="none"]) button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"]),\
+		div[class*="age-dialog"]:not([style*="none"]) button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"]),\
+		div[id*="age-dialog"]:not([style*="none"]) button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"]),\
+		div[class*="age-preview"]:not([style*="none"]) button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"]),\
+		div[id*="age-preview"]:not([style*="none"]) button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"]),\
+		div[class*="age-confirm"]:not([style*="none"]) button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"]),\
+		div[id*="age-confirm"]:not([style*="none"]) button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"]),\
+		div[class*="age-popup"]:not([style*="none"]) button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"]),\
+		div[id*="age-popup"]:not([style*="none"]) button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"]),\
+		div[class*="age-modal"]:not([style*="none"]) button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"]),\
+		div[id*="age-modal"]:not([style*="none"]) button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"]),\
+		div[class*="age-check"]:not([style*="none"]) button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"]),\
+		div[id*="age-check"]:not([style*="none"]) button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"])',
   ];
 
   // Search loop function
@@ -556,35 +667,52 @@
         });
       });
 
-      document
-        .querySelectorAll(searchGroups[counter % searchGroupsLength])
-        .forEach(function (element) {
-          if (element.click && !element.classList.contains("idcac")) {
-            element.classList.add("idcac");
+      const currentSelector = searchGroups[counter % searchGroupsLength];
+      let elements = [];
 
-            if (typeof chrome == "object" && chrome.runtime) {
-              chrome.runtime.sendMessage({
-                command: "cookie_warning_dismissed",
-                url: document.location.href,
-              });
+      // Handle XPath selectors (starting with //)
+      if (currentSelector.startsWith("//")) {
+        const xpathResult = document.evaluate(
+          currentSelector,
+          document,
+          null,
+          XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+          null
+        );
+        for (let i = 0; i < xpathResult.snapshotLength; i++) {
+          elements.push(xpathResult.snapshotItem(i));
+        }
+      } else {
+        // Handle CSS selectors
+        elements = Array.from(document.querySelectorAll(currentSelector));
+      }
+
+      elements.forEach(function (element) {
+        if (element && element.click && !element.classList.contains("idcac")) {
+          element.classList.add("idcac");
+
+          if (typeof chrome == "object" && chrome.runtime) {
+            chrome.runtime.sendMessage({
+              command: "cookie_warning_dismissed",
+              url: document.location.href,
+            });
+          }
+
+          if (element) {
+            if (element.disabled) {
+              element.disabled = false;
             }
-
-            if (element) {
-              if (element.disabled) {
-                element.disabled = false;
-              }
+            element.click();
+          }
+          setTimeout(function () {
+            if (element && element.id != "disagree-btn") {
               element.click();
             }
-            setTimeout(function () {
-              if (element && element.id != "disagree-btn") {
-                element.click();
-              }
-            }, 300);
+          }, 300);
 
-            console.log("Timeout for element click:", timeoutDuration);
-            timeoutDuration += 100;
-          }
-        });
+          timeoutDuration += 300;
+        }
+      });
 
       if (counter < 100 * searchGroupsLength) {
         searchLoop(counter + 1);

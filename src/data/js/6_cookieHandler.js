@@ -403,6 +403,22 @@ function getE(hostname) {
       return ["_gdpr=necessary"];
     case "pricewise.nl":
       return ["CookieConsent=only_necessary"];
+    case "ploom.pt":
+    case "ploom.ro":
+    case "ploom.hu":
+    case "ploom.ua":
+    case "ploom.lv":
+    case "ploom.lt":
+    case "de.ploom.com":
+    case "ploom.co.uk":
+    case "ploom.gr":
+    case "ploom.cz":
+    case "ploom.pl":
+    case "ploom.it":
+    case "ploom.ch":
+      return ["isAgeConfirmed=true"];
+    case "clubjt.jp":
+      return ["adult_certificated=true"];
     case "lokalplus.nrw":
       return ["banner=0"];
     case "hintertuxergletscher.at":

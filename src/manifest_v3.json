@@ -43,5 +43,11 @@
         "path": "rules.json"
       }
     ]
-  }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["data/css/common.css"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
