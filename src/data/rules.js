@@ -20605,7 +20605,79 @@ const rules = {
     s: ".pcb { display: none !important; } html, body { overflow: auto !important; }",
   },
 
-  // end of const rules
+  "kushqueen.shop": {
+    s: "#age-verification-overlay,#age-verification-popup,.pd-cookie-banner-window,.cc-window{display:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "texanhemp.com": {
+    s: "#ea-age-verification,#POPUPS_ROOT{display:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "smokehonest.com": {
+    s: "#preview_img,.preview_box,[class*=\"kl-teaser-\"]{display:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "greensandbeansdispensary.com": {
+    s: ".elementor-location-popup[data-elementor-id=\"2821\"],.elementor-location-popup[data-elementor-id=\"2822\"],#elementor-popup-modal-2821,#elementor-popup-modal-2822{display:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "realbudz.com": {
+    s: "#emav-overlay-wrap,#emav-overlay,.privy-widget-popup-outer-container,.privy-widget-bartab{display:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "23state.com": {
+    s: "#agechecker-age-gate,#ac-ag-popup,.js-cookie-policy{display:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "naturesgreenoils.com": {
+    s: ".agp__wrapper,.agp__background{display:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "soulfulbee.com": {
+    s: ".verification-popup-container,#prompt__background,#verification__prompt,shopify-forms-embed,#app-embed-container-1331,[id^=\"app-embed-container-\"],div[data-nametag=\"shop-portal-provider\"][data-type=\"modal\"][data-variant=\"leadCapture\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "shopcbdharvest.com": {
+    s: ".age-gate-wrapper,.age-gate-background-color,.age-gate-background,.divioverlay.divioverlay-open,.divioverlay-bg{display:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "hemp360.com": {
+    s: "#preview_img,.preview_box{display:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "shop.greenhouseseeds.us": {
+    s: ".lw_age_verification_popup,.lw_av_content,.lw_av_check_verification{display:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "barneysfarm.us": {
+    s: "#modalOverlay,#countryForm.modal,#cookie-msg,.popupDislcaimer{display:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "staxdistro.com": {
+    s: "#sh_website_modal_popup,#sh_website_modal_popup_2,.modal-backdrop.show{display:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "creativecureglobal.com": {
+    s: "#age-verification-popup{display:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "yewyewshop.com": {
+    s: "[id^=\"alia-root-\"],[id^=\"alia-popup-root-\"]{display:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "everythingfor420.com": {
+    s: "#agechecker-age-gate,#ac-ag-popup,[aria-label=\"POPUP Form\"][role=\"dialog\"]{display:none!important;}html,body{overflow:auto!important;overflow-y:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "wisconsinhorticulture.com": {
+    s: ".fancyboxAge-wrap,.fancyboxAge-overlay,.fancyboxAge-iframe,[class*=\"fancyboxAge\"],[id*=\"fancyboxAge\"],iframe[class*=\"fancyboxAge\"],iframe[id*=\"fancyboxAge\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "go-botanicals.com": {
+    s: "[id^=\"elementor-popup-modal-\"]{display:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+// end of const rules
 };
 
 const blockUrls = {
