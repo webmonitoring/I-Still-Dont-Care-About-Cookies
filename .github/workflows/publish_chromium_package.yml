@@ -21,6 +21,10 @@ permissions:
   contents: read
   packages: write
 
+concurrency:
+  group: publish-chromium-package
+  cancel-in-progress: false
+
 jobs:
   publish:
     if: |
@@ -124,31 +128,29 @@ jobs:
         run: |
           PACKAGE_NAME=$(node -e "const p=require('./src/package.json'); process.stdout.write(p.name)")
           BASE_VERSION="${{ steps.upstream.outputs.upstream_version }}"
-          npm view "$PACKAGE_NAME" versions --json --registry=https://npm.pkg.github.com/ > /tmp/published_versions.json 2>/dev/null || echo "[]" > /tmp/published_versions.json
+          
+          version_exists() {
+            local version="$1"
+            local err_file
+            err_file=$(mktemp)
+            if npm view "${PACKAGE_NAME}@${version}" version --registry=https://npm.pkg.github.com/ >/dev/null 2>"$err_file"; then
+              rm -f "$err_file"
+              return 0
+            fi
+            if grep -Eqi 'E404|404|No match found|is not in this registry' "$err_file"; then
+              rm -f "$err_file"
+              return 1
+            fi
+            echo "Unexpected npm view error while checking ${PACKAGE_NAME}@${version}:"
+            cat "$err_file"
+            rm -f "$err_file"
+            exit 1
+          }
 
-          NEXT_PATCH=$(node - "$BASE_VERSION" /tmp/published_versions.json <<'NODE'
-          const fs = require('fs');
-          const base = process.argv[2];
-          const versionsPath = process.argv[3];
-          const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-          let data = [];
-          try {
-            data = JSON.parse(fs.readFileSync(versionsPath, 'utf8'));
-          } catch {
-            data = [];
-          }
-          const versions = Array.isArray(data) ? data : (data ? [data] : []);
-          const re = new RegExp(`^${escapeRegExp(base)}-wm\\.(\\d+)$`);
-          let max = 0;
-          for (const v of versions) {
-            const m = re.exec(String(v));
-            if (m) {
-              max = Math.max(max, Number(m[1]));
-            }
-          }
-          process.stdout.write(String(max + 1));
-          NODE
-          )
+          NEXT_PATCH=1
+          while version_exists "${BASE_VERSION}-wm.${NEXT_PATCH}"; do
+            NEXT_PATCH=$((NEXT_PATCH + 1))
+          done
 
           NEW_VERSION="${BASE_VERSION}-wm.${NEXT_PATCH}"
           node -e "const fs=require('fs'); const p='src/package.json'; const pkg=JSON.parse(fs.readFileSync(p,'utf8')); pkg.version=process.argv[1]; fs.writeFileSync(p, JSON.stringify(pkg, null, 2)+'\n');" "$NEW_VERSION"
@@ -216,9 +218,9 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [ "${{ steps.release.outputs.mode }}" = "patch" ]; then
-            npm publish --registry=https://npm.pkg.github.com/ --tag "wm-${{ steps.upstream.outputs.upstream_version }}"
+            npm publish --registry=https://npm.pkg.github.com/ --tag "wm-${{ steps.upstream.outputs.upstream_version }}" --ignore-scripts
           else
-            npm publish --registry=https://npm.pkg.github.com/
+            npm publish --registry=https://npm.pkg.github.com/ --ignore-scripts
           fi
 
       - name: Add or update base-version dist-tag
