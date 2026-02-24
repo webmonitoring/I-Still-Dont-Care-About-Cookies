@@ -11,6 +11,7 @@
   },
   "exports": {
     ".": "./index.js",
+    "./manifest.json": "./manifest.json",
     "./manifest": "./manifest_v3.json",
     "./package.json": "./package.json"
   },

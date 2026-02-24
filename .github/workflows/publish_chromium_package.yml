@@ -121,6 +121,9 @@ jobs:
       - name: Sync package version from src manifest
         run: node webmonitoring/scripts/sync-chromium-package-version.mjs
 
+      - name: Ensure manifest.json exists for Chromium package consumers
+        run: cp src/manifest_v3.json src/manifest.json
+
       - name: Set next patch package version
         if: steps.release.outputs.mode == 'patch'
         env:
