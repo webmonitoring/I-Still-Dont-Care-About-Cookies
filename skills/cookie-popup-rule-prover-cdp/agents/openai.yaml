@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cookie Rule Prover (CDP)"
+  short_description: "Create and prove popup-blocking site rules via Chrome CDP (single or batch URLs)"
+  default_prompt: "Use $cookie-popup-rule-prover-cdp to add and verify popup-blocking extension rules for one or more URLs with before/after screenshots using Chrome DevTools CDP autoconnect, defaulting to src/data/rules.js unless a rules file path is provided."
