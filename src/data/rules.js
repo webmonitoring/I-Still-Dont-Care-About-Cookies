@@ -20765,6 +20765,70 @@ const rules = {
     s: "#modals-root,[role=\"dialog\"],[aria-modal=\"true\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
   },
 
+  "binoidcbd.com": {
+    s: "#bavp-popup-overlay,[id^=\"alia-root-\"]{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "grasscity.co.uk": {
+    s: "#sso-register-popup{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "grasscity.de": {
+    s: "#sso-register-popup{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "loveroom.co.uk": {
+    s: "#age-limit-overlay,#cookie_policy_block{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "mangajane21.com": {
+    s: "#modals-root,div.bg-modal-cover.dark\\:bg-modal-cover-dark.backdrop-blur-\\[8px\\],div.modal-content.age_verification_agreement_modal,noindex.age_verification_content{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "mysweetvickie.com": {
+    s: "div.agy,div.agy div.box,div.overlay-verify{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}#page{filter:none !important;-webkit-filter:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;filter:none !important;-webkit-filter:none !important;}",
+  },
+
+  "ownlyorganic.com": {
+    s: "div.mfp-bg.mfp-dark.mfp-ready,div.mfp-wrap.mfp-auto-cursor.mfp-dark.mfp-ready,div.mfp-container.mfp-s-ready.mfp-inline-holder,div.age-checker.js-age-draw,div.age-checker__wrapper,#shopify-buyer-consent,[id*=\"consent\" i]{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "pharmacbd.com": {
+    s: "div.mfp-bg.mfp-ready,div.mfp-wrap.wd-age-verify-wrap,div.wd-cookies-popup.popup-display,div.wcprbl-location-selector-popup-shadow.wcprbl-visible,div.wcprbl-location-selector-popup.wcprbl-visible{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "pussyfreeclub.com": {
+    s: "#modals-root,div.bg-modal-cover.dark\\:bg-modal-cover-dark.backdrop-blur-\\[8px\\],div.modal-content.age_verification_agreement_modal,noindex.age_verification_content{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "romansrummet.se": {
+    s: "#age-limit-overlay,#cookie_policy_block{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "sethtyler.com": {
+    s: "#modals-root,div.bg-modal-cover.dark\\:bg-modal-cover-dark.backdrop-blur-\\[8px\\],div.modal-content.age_verification_agreement_modal,noindex.age_verification_content{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "thcaking.com": {
+    s: "#ageverification-form{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "vrbtrans.com": {
+    s: "div.splash-screen.trans,div.accept-cookies{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "deliciousseeds.com": {
+    s: "#fancybox-overlay,#fancybox-wrap{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "hipersemillas.com": {
+    s: "#light,#fade{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "wallvibe.net": {
+    s: "body > div[style*=\"backdrop-filter: blur(5px)\" i][style*=\"z-index: 9999\" i]{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
 // end of const rules
 };
 
