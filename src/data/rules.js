@@ -20829,6 +20829,30 @@ const rules = {
     s: "body > div[style*=\"backdrop-filter: blur(5px)\" i][style*=\"z-index: 9999\" i]{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
   },
 
+  "elev8.com": {
+    s: "article.index-page-popup.active,aside.ka9X5q_aside{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "legendarybudz420.com": {
+    s: "#dmPopupMask,#dmPopup{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "optipluslifemd.com": {
+    s: "div[id^=\"alia-root-\"],div[id^=\"alia-popup-root-alia-\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "samsaraseeds.com": {
+    s: "#fancybox-overlay,#fancybox-wrap,#fancybox-bg-n,#fancybox-bg-s,#fancybox-bg-e,#fancybox-bg-w,#fancybox-bg-ne,#fancybox-bg-nw,#fancybox-bg-se,#fancybox-bg-sw{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "seedsman.com": {
+    s: "div[class*=\"kl-teaser\"],div[aria-label=\"POPUP Form\"],div[class*=\"kl-private-reset-css\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "silent-seeds.com": {
+    s: "#psagechecker-lightbox,#overlay,div[aria-label=\"POPUP Form\"],div[class*=\"kl-private-reset-css\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
 // end of const rules
 };
 
