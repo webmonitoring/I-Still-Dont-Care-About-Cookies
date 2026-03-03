@@ -20677,6 +20677,42 @@ const rules = {
     s: "[id^=\"elementor-popup-modal-\"]{display:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
   },
 
+  "back9botanicals.com": {
+    s: "div.search-modal.modal__content,div.popup-wrapper,div.overlay.age-verification__overlay,div.needsclick[aria-label=\"POPUP Form\"][class*=\"kl-private-reset-css\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "bloomzhemp.com": {
+    s: "#bavp-popup-overlay,#bavp-popup-content,#alia-root-164846{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "bluehalotexas.com": {
+    s: "#elementor-popup-modal-3277{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "callmissfang.com": {
+    s: "#age-verifier-popup{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "chillabites.com": {
+    s: "#popup-verification,div.age-overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "coinsdrom.com": {
+    s: "div.alert-wrap,div.alert-popup,#cookie-notice{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "drinkpsillygoose.com": {
+    s: "div.agp__wrapper,div.agp__background.agp__background--image,#rebuy-bubble-global-alert-modal,.rebuy-cart__flyout{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "shopkivaconfections.com": {
+    s: "div.agp__wrapper,div.agp__background.agp__background--image,div.needsclick[class*=\"kl-private-reset-css\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "thekratomcartel.com": {
+    s: "#evav-overlay-wrap,#evav-overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
 // end of const rules
 };
 
