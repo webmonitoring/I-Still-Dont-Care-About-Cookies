@@ -20713,6 +20713,58 @@ const rules = {
     s: "#evav-overlay-wrap,#evav-overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
   },
 
+  "czechdellais.com": {
+    s: "div.modal,#modal-container,.backdrop{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}body.blur,body.blur::before,body.blur::after{filter:none!important;-webkit-filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;opacity:1!important;pointer-events:auto!important;}body.blur *{filter:none!important;-webkit-filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "czechfantasy.com": {
+    s: "div.modal,#modal-container,.backdrop{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}body.blur,body.blur::before,body.blur::after{filter:none!important;-webkit-filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;opacity:1!important;pointer-events:auto!important;}body.blur *{filter:none!important;-webkit-filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "dailytreet.com": {
+    s: "#elementor-popup-modal-759,div.elementor-popup-modal,[aria-modal=\"true\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "dinromans.se": {
+    s: "#age-limit-overlay,#cookie_policy_block,div.mod-cookie-policy{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "doll-mall.com": {
+    s: "div.wd-promo-popup-wrapper,#evav-overlay-wrap,#evav-overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "earthlyessentials.life": {
+    s: "div.ins-notices.ins-notices--fixed.ins-notices--order-direct{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "exoticmedz.com": {
+    s: "#em-store-modal-overlay,div.em-store-modal-overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "fxify.com": {
+    s: "div.consent-screen{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "highrd.shop": {
+    s: "#gm_age_preview_img,div.gminfoTechmodal.gm_age_back_imge.gm_age_template,div.gm_age_preview_box,div.gm_age_overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "hqdtechusa.com": {
+    s: "#AutoPopup-Age-Verifier,autopopup-age-verifier.modal.autopopup.autopopup-age-verifier,#AutoPopup-Newsletter,autopopup-modal.modal.autopopup.autopopup-newsletter{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "iris-casting-production.com": {
+    s: "#dclm_modal_screen,#dclm_modal_content{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "kinkyponygirl.com": {
+    s: "#modals-root,[role=\"dialog\"],[aria-modal=\"true\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "latexlolanoir.com": {
+    s: "#modals-root,[role=\"dialog\"],[aria-modal=\"true\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
 // end of const rules
 };
 
