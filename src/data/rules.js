@@ -20677,6 +20677,182 @@ const rules = {
     s: "[id^=\"elementor-popup-modal-\"]{display:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
   },
 
+  "back9botanicals.com": {
+    s: "div.search-modal.modal__content,div.popup-wrapper,div.overlay.age-verification__overlay,div.needsclick[aria-label=\"POPUP Form\"][class*=\"kl-private-reset-css\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "bloomzhemp.com": {
+    s: "#bavp-popup-overlay,#bavp-popup-content,#alia-root-164846{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "bluehalotexas.com": {
+    s: "#elementor-popup-modal-3277{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "callmissfang.com": {
+    s: "#age-verifier-popup{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "chillabites.com": {
+    s: "#popup-verification,div.age-overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "coinsdrom.com": {
+    s: "div.alert-wrap,div.alert-popup,#cookie-notice{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "drinkpsillygoose.com": {
+    s: "div.agp__wrapper,div.agp__background.agp__background--image,#rebuy-bubble-global-alert-modal,.rebuy-cart__flyout{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "shopkivaconfections.com": {
+    s: "div.agp__wrapper,div.agp__background.agp__background--image,div.needsclick[class*=\"kl-private-reset-css\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "thekratomcartel.com": {
+    s: "#evav-overlay-wrap,#evav-overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "czechdellais.com": {
+    s: "div.modal,#modal-container,.backdrop{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}body.blur,body.blur::before,body.blur::after{filter:none!important;-webkit-filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;opacity:1!important;pointer-events:auto!important;}body.blur *{filter:none!important;-webkit-filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "czechfantasy.com": {
+    s: "div.modal,#modal-container,.backdrop{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}body.blur,body.blur::before,body.blur::after{filter:none!important;-webkit-filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;opacity:1!important;pointer-events:auto!important;}body.blur *{filter:none!important;-webkit-filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "dailytreet.com": {
+    s: "#elementor-popup-modal-759,div.elementor-popup-modal,[aria-modal=\"true\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "dinromans.se": {
+    s: "#age-limit-overlay,#cookie_policy_block,div.mod-cookie-policy{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "doll-mall.com": {
+    s: "div.wd-promo-popup-wrapper,#evav-overlay-wrap,#evav-overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "earthlyessentials.life": {
+    s: "div.ins-notices.ins-notices--fixed.ins-notices--order-direct{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "exoticmedz.com": {
+    s: "#em-store-modal-overlay,div.em-store-modal-overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "fxify.com": {
+    s: "div.consent-screen{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "highrd.shop": {
+    s: "#gm_age_preview_img,div.gminfoTechmodal.gm_age_back_imge.gm_age_template,div.gm_age_preview_box,div.gm_age_overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "hqdtechusa.com": {
+    s: "#AutoPopup-Age-Verifier,autopopup-age-verifier.modal.autopopup.autopopup-age-verifier,#AutoPopup-Newsletter,autopopup-modal.modal.autopopup.autopopup-newsletter{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "iris-casting-production.com": {
+    s: "#dclm_modal_screen,#dclm_modal_content{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "kinkyponygirl.com": {
+    s: "#modals-root,[role=\"dialog\"],[aria-modal=\"true\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "latexlolanoir.com": {
+    s: "#modals-root,[role=\"dialog\"],[aria-modal=\"true\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "binoidcbd.com": {
+    s: "#bavp-popup-overlay,[id^=\"alia-root-\"]{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "grasscity.co.uk": {
+    s: "#sso-register-popup{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "grasscity.de": {
+    s: "#sso-register-popup{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "loveroom.co.uk": {
+    s: "#age-limit-overlay,#cookie_policy_block{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "mangajane21.com": {
+    s: "#modals-root,div.bg-modal-cover.dark\\:bg-modal-cover-dark.backdrop-blur-\\[8px\\],div.modal-content.age_verification_agreement_modal,noindex.age_verification_content{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "mysweetvickie.com": {
+    s: "div.agy,div.agy div.box,div.overlay-verify{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}#page{filter:none !important;-webkit-filter:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;filter:none !important;-webkit-filter:none !important;}",
+  },
+
+  "ownlyorganic.com": {
+    s: "div.mfp-bg.mfp-dark.mfp-ready,div.mfp-wrap.mfp-auto-cursor.mfp-dark.mfp-ready,div.mfp-container.mfp-s-ready.mfp-inline-holder,div.age-checker.js-age-draw,div.age-checker__wrapper,#shopify-buyer-consent,[id*=\"consent\" i]{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "pharmacbd.com": {
+    s: "div.mfp-bg.mfp-ready,div.mfp-wrap.wd-age-verify-wrap,div.wd-cookies-popup.popup-display,div.wcprbl-location-selector-popup-shadow.wcprbl-visible,div.wcprbl-location-selector-popup.wcprbl-visible{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "pussyfreeclub.com": {
+    s: "#modals-root,div.bg-modal-cover.dark\\:bg-modal-cover-dark.backdrop-blur-\\[8px\\],div.modal-content.age_verification_agreement_modal,noindex.age_verification_content{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "romansrummet.se": {
+    s: "#age-limit-overlay,#cookie_policy_block{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "sethtyler.com": {
+    s: "#modals-root,div.bg-modal-cover.dark\\:bg-modal-cover-dark.backdrop-blur-\\[8px\\],div.modal-content.age_verification_agreement_modal,noindex.age_verification_content{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "thcaking.com": {
+    s: "#ageverification-form{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "vrbtrans.com": {
+    s: "div.splash-screen.trans,div.accept-cookies{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "deliciousseeds.com": {
+    s: "#fancybox-overlay,#fancybox-wrap{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "hipersemillas.com": {
+    s: "#light,#fade{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "wallvibe.net": {
+    s: "body > div[style*=\"backdrop-filter: blur(5px)\" i][style*=\"z-index: 9999\" i]{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}html,body{overflow:auto !important;position:static !important;height:auto !important;}",
+  },
+
+  "elev8.com": {
+    s: "article.index-page-popup.active,aside.ka9X5q_aside{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "legendarybudz420.com": {
+    s: "#dmPopupMask,#dmPopup{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "optipluslifemd.com": {
+    s: "div[id^=\"alia-root-\"],div[id^=\"alia-popup-root-alia-\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "samsaraseeds.com": {
+    s: "#fancybox-overlay,#fancybox-wrap,#fancybox-bg-n,#fancybox-bg-s,#fancybox-bg-e,#fancybox-bg-w,#fancybox-bg-ne,#fancybox-bg-nw,#fancybox-bg-se,#fancybox-bg-sw{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "seedsman.com": {
+    s: "div[class*=\"kl-teaser\"],div[aria-label=\"POPUP Form\"],div[class*=\"kl-private-reset-css\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "silent-seeds.com": {
+    s: "#psagechecker-lightbox,#overlay,div[aria-label=\"POPUP Form\"],div[class*=\"kl-private-reset-css\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
 // end of const rules
 };
 
