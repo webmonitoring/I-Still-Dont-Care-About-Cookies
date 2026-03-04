@@ -1,16 +1,8 @@
 name: publish_chromium_package
 
 on:
+  push:
   workflow_dispatch:
-    inputs:
-      release_mode:
-        description: Release mode for workflow_dispatch runs
-        type: choice
-        options:
-          - upstream
-          - patch
-        default: upstream
-        required: true
   pull_request:
     types:
       - closed
@@ -28,6 +20,7 @@ concurrency:
 jobs:
   publish:
     if: |
+      github.event_name == 'push' ||
       github.event_name == 'workflow_dispatch' ||
       (
         github.event.pull_request.merged == true &&
@@ -48,116 +41,23 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: "@webmonitoring"
 
-      - name: Detect PR scope
-        if: github.event_name == 'pull_request'
-        id: prscope
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const prNumber = context.payload.pull_request.number;
-            const files = await github.paginate(github.rest.pulls.listFiles, {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: prNumber,
-              per_page: 100
-            });
-
-            const fileNames = files.map((f) => f.filename);
-            const onlyRules =
-              fileNames.length > 0 &&
-              fileNames.every((name) => name === "src/data/rules.js");
-
-            core.setOutput("only_rules", String(onlyRules));
-            core.setOutput("files_csv", fileNames.join(","));
-            core.info(`PR #${prNumber} changed files: ${fileNames.join(", ")}`);
-            core.info(`PR #${prNumber} only rules.js: ${onlyRules}`);
-
-      - name: Determine release mode
-        id: release
-        env:
-          RELEASE_MODE_INPUT: ${{ github.event.inputs.release_mode || 'upstream' }}
-          PR_ONLY_RULES: ${{ steps.prscope.outputs.only_rules || 'false' }}
-        run: |
-          if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
-            if [ "$PR_ONLY_RULES" = "true" ]; then
-              MODE="patch"
-            else
-              MODE="upstream"
-            fi
-          else
-            MODE="$RELEASE_MODE_INPUT"
-          fi
-          if [ "$MODE" != "upstream" ] && [ "$MODE" != "patch" ]; then
-            echo "Invalid release mode: $MODE"
-            exit 1
-          fi
-          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
-          echo "Release mode: $MODE"
-
-      - name: Resolve upstream release tag
-        id: upstream
-        run: |
-          git remote add upstream https://github.com/OhMyGuus/I-Still-Dont-Care-About-Cookies.git 2>/dev/null || true
-          git fetch upstream master --tags --prune
-
-          UPSTREAM_TAG="$(
-            git for-each-ref \
-              --merged=upstream/master \
-              --sort=-version:refname \
-              --format='%(refname:lstrip=2)' \
-              refs/tags \
-            | grep -E '^[vV][0-9]+\.[0-9]+\.[0-9]+([-.].*)?$' \
-            | head -n1
-          )"
-          if [ -z "$UPSTREAM_TAG" ]; then
-            echo "Could not resolve a release-style tag from upstream/master."
-            exit 1
-          fi
-          UPSTREAM_VERSION="${UPSTREAM_TAG#[vV]}"
-          echo "upstream_tag=$UPSTREAM_TAG" >> "$GITHUB_OUTPUT"
-          echo "upstream_version=$UPSTREAM_VERSION" >> "$GITHUB_OUTPUT"
-          echo "Resolved upstream: $UPSTREAM_TAG"
-
       - name: Sync package version from src manifest
         run: node webmonitoring/scripts/sync-chromium-package-version.mjs
 
       - name: Ensure manifest.json exists for Chromium package consumers
         run: cp src/manifest_v3.json src/manifest.json
 
-      - name: Set next patch package version
-        if: steps.release.outputs.mode == 'patch'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set publish package version
+        id: versioning
         run: |
-          PACKAGE_NAME=$(node -e "const p=require('./src/package.json'); process.stdout.write(p.name)")
-          BASE_VERSION="${{ steps.upstream.outputs.upstream_version }}"
-          
-          version_exists() {
-            local version="$1"
-            local err_file
-            err_file=$(mktemp)
-            if npm view "${PACKAGE_NAME}@${version}" version --registry=https://npm.pkg.github.com/ >/dev/null 2>"$err_file"; then
-              rm -f "$err_file"
-              return 0
-            fi
-            if grep -Eqi 'E404|404|No match found|is not in this registry' "$err_file"; then
-              rm -f "$err_file"
-              return 1
-            fi
-            echo "Unexpected npm view error while checking ${PACKAGE_NAME}@${version}:"
-            cat "$err_file"
-            rm -f "$err_file"
-            exit 1
-          }
-
-          NEXT_PATCH=1
-          while version_exists "${BASE_VERSION}-wm.${NEXT_PATCH}"; do
-            NEXT_PATCH=$((NEXT_PATCH + 1))
-          done
-
-          NEW_VERSION="${BASE_VERSION}-wm.${NEXT_PATCH}"
+          BASE_VERSION=$(node -e "const p=require('./src/package.json'); process.stdout.write(p.version)")
+          NEW_VERSION="${BASE_VERSION}-$(git rev-list --count HEAD)"
+          COMMIT_COUNT="${NEW_VERSION#${BASE_VERSION}-}"
           node -e "const fs=require('fs'); const p='src/package.json'; const pkg=JSON.parse(fs.readFileSync(p,'utf8')); pkg.version=process.argv[1]; fs.writeFileSync(p, JSON.stringify(pkg, null, 2)+'\n');" "$NEW_VERSION"
-          echo "Set patch version: $NEW_VERSION"
+          echo "base_version=$BASE_VERSION" >> "$GITHUB_OUTPUT"
+          echo "commit_count=$COMMIT_COUNT" >> "$GITHUB_OUTPUT"
+          echo "publish_version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
+          echo "Set publish version: $NEW_VERSION"
 
       - name: Read package coordinates
         id: package
@@ -170,38 +70,14 @@ jobs:
 
       - name: Validate package version policy
         env:
-          RELEASE_MODE: ${{ steps.release.outputs.mode }}
-          UPSTREAM_TAG: ${{ steps.upstream.outputs.upstream_tag }}
-          UPSTREAM_VERSION: ${{ steps.upstream.outputs.upstream_version }}
+          EXPECTED_VERSION: ${{ steps.versioning.outputs.publish_version }}
           PKG_VERSION: ${{ steps.package.outputs.version }}
         run: |
-          node <<'NODE'
-          const mode = process.env.RELEASE_MODE;
-          const upstreamTag = process.env.UPSTREAM_TAG;
-          const upstreamVersion = process.env.UPSTREAM_VERSION;
-          const pkgVersion = process.env.PKG_VERSION;
-
-          const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-
-          if (mode === 'upstream') {
-            if (pkgVersion !== upstreamTag && pkgVersion !== upstreamVersion) {
-              throw new Error(`Package version (${pkgVersion}) does not match latest upstream tag (${upstreamTag}).`);
-            }
-            console.log(`Upstream release validated: ${pkgVersion} matches ${upstreamTag}`);
-            process.exit(0);
-          }
-
-          if (mode === 'patch') {
-            const re = new RegExp(`^${escapeRegExp(upstreamVersion)}-wm\\.\\d+$`);
-            if (!re.test(pkgVersion)) {
-              throw new Error(`Patch version (${pkgVersion}) must match ${upstreamVersion}-wm.<N>.`);
-            }
-            console.log(`Patch release validated: ${pkgVersion} (base ${upstreamVersion})`);
-            process.exit(0);
-          }
-
-          throw new Error(`Unknown release mode: ${mode}`);
-          NODE
+          if [ "$PKG_VERSION" != "$EXPECTED_VERSION" ]; then
+            echo "Package version mismatch. Expected '$EXPECTED_VERSION' but found '$PKG_VERSION'."
+            exit 1
+          fi
+          echo "Publish version validated: $PKG_VERSION"
 
       - name: Check if version already exists
         id: exists
@@ -219,19 +95,4 @@ jobs:
         working-directory: src
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if [ "${{ steps.release.outputs.mode }}" = "patch" ]; then
-            npm publish --registry=https://npm.pkg.github.com/ --tag "wm-${{ steps.upstream.outputs.upstream_version }}" --ignore-scripts
-          else
-            npm publish --registry=https://npm.pkg.github.com/ --ignore-scripts
-          fi
-
-      - name: Add or update base-version dist-tag
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          DIST_TAG="wm-${{ steps.upstream.outputs.upstream_version }}"
-          PACKAGE_VERSION="${{ steps.package.outputs.version }}"
-          PACKAGE_NAME="${{ steps.package.outputs.package_name }}"
-          npm dist-tag add "${PACKAGE_NAME}@${PACKAGE_VERSION}" "$DIST_TAG" --registry=https://npm.pkg.github.com/
-          echo "Updated dist-tag: $DIST_TAG -> ${PACKAGE_NAME}@${PACKAGE_VERSION}"
+        run: npm publish --registry=https://npm.pkg.github.com/ --ignore-scripts
