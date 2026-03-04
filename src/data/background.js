@@ -7,6 +7,7 @@ const xmlTabs = {};
 let lastDeclarativeNetRuleId = 1;
 let settings = { statusIndicators: true, whitelistedDomains: {} };
 const isManifestV3 = chrome.runtime.getManifest().manifest_version == 3;
+const extensionNameForLoadedSignal = "isdcac";
 
 // Badges
 function setBadge(tabId, text) {
@@ -206,7 +207,7 @@ async function recreateTabList(magic) {
   if (magic) {
     for (const i in tabList) {
       if (Object.prototype.hasOwnProperty.call(tabList, i)) {
-        doTheMagic(tabList[i].id);
+        doTheMagicAndAnnounceLoaded(tabList[i].id);
       }
     }
   }
@@ -475,6 +476,56 @@ function activateDomain(hostname, tabId, frameId) {
   return status;
 }
 
+function markExtensionAsLoaded(tabId, frameId) {
+  if ((frameId || 0) > 0) {
+    return;
+  }
+
+  const markLoadedInPage = (extensionName) => {
+    if (!Array.isArray(window.loaded_extensions)) {
+      window.loaded_extensions = [];
+    }
+
+    if (!window.loaded_extensions.includes(extensionName)) {
+      window.loaded_extensions.push(extensionName);
+    }
+  };
+
+  if (isManifestV3) {
+    chrome.scripting.executeScript(
+      {
+        target: { tabId, frameIds: [frameId || 0] },
+        func: markLoadedInPage,
+        args: [extensionNameForLoadedSignal],
+        world: "MAIN",
+      },
+      function () {
+        if (!chrome.runtime.lastError) {
+          return;
+        }
+
+        chrome.scripting.executeScript({
+          target: { tabId, frameIds: [frameId || 0] },
+          func: markLoadedInPage,
+          args: [extensionNameForLoadedSignal],
+        });
+      }
+    );
+    return;
+  }
+
+  const extensionNameForCode = JSON.stringify(extensionNameForLoadedSignal);
+
+  chrome.tabs.executeScript(tabId, {
+    frameId: frameId || 0,
+    code:
+      '(function(extensionName){if(!Array.isArray(window.loaded_extensions)){window.loaded_extensions=[];}if(!window.loaded_extensions.includes(extensionName)){window.loaded_extensions.push(extensionName);}})(' +
+      extensionNameForCode +
+      ");",
+    runAt: xmlTabs[tabId] ? "document_idle" : "document_end",
+  });
+}
+
 function doTheMagic(tabId, frameId, anotherTry) {
   if (!tabList[tabId] || tabList[tabId].url.indexOf("http") != 0) {
     return;
@@ -534,6 +585,15 @@ function doTheMagic(tabId, frameId, anotherTry) {
   );
 }
 
+function doTheMagicAndAnnounceLoaded(tabId, frameId, anotherTry) {
+  if (!tabList[tabId] || tabList[tabId].url.indexOf("http") != 0) {
+    return;
+  }
+
+  doTheMagic(tabId, frameId, anotherTry);
+  markExtensionAsLoaded(tabId, frameId);
+}
+
 chrome.webNavigation.onCommitted.addListener(async (tab) => {
   if (tab.frameId > 0) {
     return;
@@ -544,7 +604,7 @@ chrome.webNavigation.onCommitted.addListener(async (tab) => {
 
   tabList[tab.tabId] = getPreparedTab(tab);
 
-  doTheMagic(tab.tabId);
+  doTheMagicAndAnnounceLoaded(tab.tabId);
 });
 
 chrome.webNavigation.onCompleted.addListener(async function (tab) {
@@ -552,7 +612,7 @@ chrome.webNavigation.onCompleted.addListener(async function (tab) {
     await initialize();
   }
   if (tab.frameId > 0 && tab.url != "about:blank") {
-    doTheMagic(tab.tabId, tab.frameId);
+    doTheMagicAndAnnounceLoaded(tab.tabId, tab.frameId);
   }
 });
 
