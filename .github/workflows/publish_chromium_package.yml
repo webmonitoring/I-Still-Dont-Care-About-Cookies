@@ -43,41 +43,7 @@ jobs:
           NEW_VERSION="${BASE_VERSION}-$(git rev-list --count HEAD)"
           COMMIT_COUNT="${NEW_VERSION#${BASE_VERSION}-}"
           node -e "const fs=require('fs'); const p='src/package.json'; const pkg=JSON.parse(fs.readFileSync(p,'utf8')); pkg.version=process.argv[1]; fs.writeFileSync(p, JSON.stringify(pkg, null, 2)+'\n');" "$NEW_VERSION"
-          echo "base_version=$BASE_VERSION" >> "$GITHUB_OUTPUT"
-          echo "commit_count=$COMMIT_COUNT" >> "$GITHUB_OUTPUT"
-          echo "publish_version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
-          echo "Set publish version: $NEW_VERSION"
 
-      - name: Read package coordinates
-        id: package
-        run: |
-          NAME=$(node -e "const p=require('./src/package.json'); process.stdout.write(p.name)")
-          VERSION=$(node -e "const p=require('./src/package.json'); process.stdout.write(p.version)")
-          echo "package_name=$NAME" >> "$GITHUB_OUTPUT"
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          echo "Resolved package: $NAME@$VERSION"
-
-      - name: Validate package version policy
-        env:
-          EXPECTED_VERSION: ${{ steps.versioning.outputs.publish_version }}
-          PKG_VERSION: ${{ steps.package.outputs.version }}
-        run: |
-          if [ "$PKG_VERSION" != "$EXPECTED_VERSION" ]; then
-            echo "Package version mismatch. Expected '$EXPECTED_VERSION' but found '$PKG_VERSION'."
-            exit 1
-          fi
-          echo "Publish version validated: $PKG_VERSION"
-
-      - name: Check if version already exists
-        id: exists
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if npm view "${{ steps.package.outputs.package_name }}@${{ steps.package.outputs.version }}" version --registry=https://npm.pkg.github.com/ >/dev/null 2>&1; then
-            echo "already_published=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "already_published=false" >> "$GITHUB_OUTPUT"
-          fi
 
       - name: Publish package
         if: steps.exists.outputs.already_published != 'true'
