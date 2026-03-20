@@ -20853,6 +20853,38 @@ const rules = {
     s: "#psagechecker-lightbox,#overlay,div[aria-label=\"POPUP Form\"],div[class*=\"kl-private-reset-css\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
   },
 
+  "gethwy.com": {
+    s: "body > div:has(#confirm-age){display:none !important}html,body{overflow:auto !important;position:static !important;height:auto !important}",
+  },
+
+  "petivabrands.com": {
+    s: "#custom-popup{display:none !important}html,body{overflow:auto !important;position:static !important;height:auto !important}",
+  },
+
+  "thegreendoor.co": {
+    s: ".overlay-group-popup,.popup-main.popup-open,#agp__root,.agp__wrapper,#drv-pop-container{display:none !important}html,body{overflow:auto !important;position:static !important;height:auto !important}",
+  },
+
+  "threefivez.com": {
+    s: "#cx_age_verify,.popup--root,popup-block.popup--block--root{display:none !important}html,body{overflow:auto !important;position:static !important;height:auto !important}",
+  },
+
+  "treehouse-cbd.com": {
+    s: ".ait-newsletter-popup{display:none !important}html,body{overflow:auto !important;position:static !important;height:auto !important}",
+  },
+
+  "yen-ology.com": {
+    s: "#agp__root,.agp__wrapper,.agp__background,#drv-pop-container,.ait-newsletter-popup{display:none !important}html,body{overflow:auto !important;position:static !important;height:auto !important}",
+  },
+
+  "herbalhealerscbd.com": {
+    s: "#cmg_age_preview_img,.cmg_age_overlay{display:none !important}html,body{overflow:auto !important;position:static !important;height:auto !important}",
+  },
+
+  "aventus8.com": {
+    s: "#verify-age-main{display:none !important}html,body{overflow:auto !important;position:static !important;height:auto !important}",
+  },
+
 // end of const rules
 };
 
