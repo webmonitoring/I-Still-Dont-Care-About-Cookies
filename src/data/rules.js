@@ -20682,7 +20682,7 @@ const rules = {
   },
 
   "bloomzhemp.com": {
-    s: "#bavp-popup-overlay,#bavp-popup-content,#alia-root-164846{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+    s: "#bavp-popup-overlay,#bavp-popup-content,#alia-root-164846,[id^=\"alia-root-\"],[id^=\"alia-popup-root-\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
   },
 
   "bluehalotexas.com": {
@@ -20903,6 +20903,26 @@ const rules = {
 
   "puffyparcel.com": {
     s: "age-verifier#AgeVerifier,age-verifier#AgeVerifier overlay-element.overlay.fixed-modal{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "puffweiserstore.com": {
+    s: "age-verifier#AgeVerifier,age-verifier#AgeVerifier overlay-element.overlay.fixed-modal,#conversions_layers_root,iframe#automizely_marketing_popup_bars{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "nextlevelcandies.com": {
+    s: ".ins-notices.ins-notices--fixed,.ins-age-confirmation#tile-age-confirmation{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "myfeelgoods.com": {
+    s: "#ageverification-form,.ageverification-wrapper-style3,.mfp-bg.mfp-ready,div[aria-label=\"POPUP Form\"],form[id^=\"klaviyo-form-\"],div[data-testid=\"POPUP\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "mrheals.com": {
+    s: ".agp__wrapper,.agp__container,.agp__background,#agp_row{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "goodwear.com": {
+    s: "[id^=\"alia-root-\"],[id^=\"alia-popup-root-\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
   },
 
 // end of const rules
