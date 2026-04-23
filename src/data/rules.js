@@ -20885,6 +20885,26 @@ const rules = {
     s: "#verify-age-main{display:none !important}html,body{overflow:auto !important;position:static !important;height:auto !important}",
   },
 
+  "getmyhi.com": {
+    s: "#modal-368,div[aria-label=\"POPUP Form\"],div[data-testid=\"POPUP\"],form[id^=\"klaviyo-form-\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body,body.klaviyo-prevent-body-scrolling{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "customoutsmokes.com": {
+    s: "#av-overlay-wrap,#av-overlay-form,.ak-master-sales-pop.Autoketing-Spu__mainStyle-module__layoutPro{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "beanpatchseeds.com": {
+    s: "#age_okay_container,#age_okay_overlay,#age_okay_fix{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html{overflow:hidden!important;height:100%!important;}body,body.age_okay_body{overflow-y:auto!important;overflow-x:hidden!important;height:100vh!important;max-height:100vh!important;position:relative!important;}",
+  },
+
+  "relievewellness.com": {
+    s: "div.fixed.inset-0.z-\\[100\\].flex.items-center.justify-center.bg-background{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "puffyparcel.com": {
+    s: "age-verifier#AgeVerifier,age-verifier#AgeVerifier overlay-element.overlay.fixed-modal{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
 // end of const rules
 };
 
