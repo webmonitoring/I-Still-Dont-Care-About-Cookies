@@ -20750,7 +20750,7 @@ const rules = {
   },
 
   "hqdtechusa.com": {
-    s: "#AutoPopup-Age-Verifier,autopopup-age-verifier.modal.autopopup.autopopup-age-verifier,#AutoPopup-Newsletter,autopopup-modal.modal.autopopup.autopopup-newsletter{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+    s: "#AutoPopup-Age-Verifier,autopopup-age-verifier.modal.autopopup.autopopup-age-verifier,#AutoPopup-Newsletter,autopopup-modal.modal.autopopup.autopopup-newsletter,#smile-ui-lite-launcher-frame-container,#smile-lite-launcher-frame,.smile-prompt-frame-container,.smile-prompt-frame{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
   },
 
   "iris-casting-production.com": {
