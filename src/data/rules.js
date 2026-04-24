@@ -20702,7 +20702,7 @@ const rules = {
   },
 
   "drinkpsillygoose.com": {
-    s: "div.agp__wrapper,div.agp__background.agp__background--image,#rebuy-bubble-global-alert-modal,.rebuy-cart__flyout{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+    s: "div.agp__wrapper,div.agp__background.agp__background--image,div.agp__background.agp__background--color,#rebuy-bubble-global-alert-modal,.rebuy-cart__flyout,.rebuy-cart__background,div[class*=\"omnisend-form-\"][class*=\"-container\"],div[class*=\"omnisend-form-\"][class*=\"-overlay\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
   },
 
   "shopkivaconfections.com": {
@@ -20967,6 +20967,74 @@ const rules = {
 
   "incendiomagicwand.com": {
     s: "div.promo-popup.is-active.show-image,div.popup-wrapper,div.popup.center.popup-image--left,#shopify-section-sections--19232612090086__popup_pro_KtXe6n{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "prizmmicros.com": {
+    s: ".cky-consent-container,.cky-modal,.verification-modal-container,.verification-modal-content{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "coloradohemphoney.com": {
+    s: "#shopify-pc__banner,.shopify-pc__banner__dialog,.mfp-bg,.mfp-wrap,.age-checker,.age-checker__wrapper,.age-checker__content,div.needsclick[aria-label=\"POPUP Form\"],form[class*=\"klaviyo-form\"],div[class*=\"kl-private-reset-css\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "weedseedsexpress.com": {
+    s: "div.consent-modal,div[class*=\"consent-modal\"],div[class*=\"bg-elevated/75\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "simplymary.com": {
+    s: "div.needsclick[aria-label=\"POPUP Form\"],form[class*=\"klaviyo-form\"],div[class*=\"kl-private-reset-css\"],#CartPopup{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "simplymary.co": {
+    s: "div.needsclick[aria-label=\"POPUP Form\"],form[class*=\"klaviyo-form\"],div[class*=\"kl-private-reset-css\"],#CartPopup{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "tesorohemp.com": {
+    s: "#av-overlay-wrap{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "primesportsnutrition.com": {
+    s: "div.needsclick[aria-label=\"POPUP Form\"],form[class*=\"klaviyo-form\"],div[class*=\"kl-private-reset-css\"],#CartDrawer,.cart-drawer{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "shopteamprime.com": {
+    s: "div.needsclick[aria-label=\"POPUP Form\"],form[class*=\"klaviyo-form\"],div[class*=\"kl-private-reset-css\"],#CartDrawer,.cart-drawer{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "physiciansgrade.com": {
+    s: "div.age-overlay,#promoPopup{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "happyhour.club": {
+    s: "#ageVerifyOverlay,#quick-cart-panel{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "growerschoiceseeds.us": {
+    s: "#gcs-age-gate-wrapper,#main-menu-mini-cart,div.needsclick[aria-label=\"POPUP Form\"],form[class*=\"klaviyo-form\"],div[class*=\"kl-private-reset-css\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "freedomseeds.com": {
+    s: "#pum-135131,#popmake-135131,.pum-overlay,.pum-container,.pum-content{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "fourvisions.com": {
+    s: "#cart-preview-dropdown,div.needsclick[aria-label=\"POPUP Form\"],form[class*=\"klaviyo-form\"],div[class*=\"kl-private-reset-css\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "evertree.ie": {
+    s: "#GeoMod,.modal-backdrop{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body,body.modal-open{overflow:auto!important;position:static!important;height:auto!important;padding-right:0!important;}",
+  },
+
+  "evertree.eu": {
+    s: "#GeoMod,.modal-backdrop{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body,body.modal-open{overflow:auto!important;position:static!important;height:auto!important;padding-right:0!important;}",
+  },
+
+  "evertree.co.uk": {
+    s: "#GeoMod,.modal-backdrop{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body,body.modal-open{overflow:auto!important;position:static!important;height:auto!important;padding-right:0!important;}",
+  },
+
+  "chefmattonline.com": {
+    s: "#shopify-section-sections--27534307164241__age-check,[data-modal-label=\"Age verification\"],#modals-modal,#modal-slot{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
   },
 
 // end of const rules
