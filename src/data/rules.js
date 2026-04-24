@@ -20925,6 +20925,50 @@ const rules = {
     s: "[id^=\"alia-root-\"],[id^=\"alia-popup-root-\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
   },
 
+  "shop.sluggers.com": {
+    s: "#shopify-section-sections--21344247775478__age-popup,#sections--21344247775478__age-popup,.age__popup--wrapper,div.needsclick[aria-label=\"POPUP Form\"],form[class*=\"klaviyo-form\"],div[class*=\"kl-private-reset-css\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "btcc.com": {
+    s: "div.custom-modal-visible,div[class*=\"styles_modal__\"],div[class*=\"multiple_modal__\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "happihourdrink.com": {
+    s: "div.agp__wrapper,div.agp__background.agp__background--image,#agp_row{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "3tallpineswholesale.com": {
+    s: "#shopify-section-sections--17802795573545__age-popup,#sections--17802795573545__age-popup,.age__popup--wrapper,#NewsletterPopup-newsletter-popup,#hulk_age_verify,#preview_img,.preview_box,.preview_box_section,.preview_box_wrap{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "grasscity.eu": {
+    s: "#sso-register-popup,div.store-popup.select-country--tooltip.active{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "seedsmafia.com": {
+    s: "div.ageModal.popupfade.active,div.ageModaldialogue,div.ageModalContainer,div.ageModalBackdrop{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "happyfruit.com": {
+    s: "div.age-overlay.active,div.age-popup,div.needsclick[aria-label=\"POPUP Form\"],form[class*=\"klaviyo-form\"],div[class*=\"kl-private-reset-css\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "theseedfair.com": {
+    s: "div.age-modal,div.age-modal__content{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "sharkbitehydration.com": {
+    s: "div.needsclick[aria-label=\"POPUP Form\"],form[class*=\"klaviyo-form\"],div[class*=\"kl-private-reset-css\"],newsletter-modal#modal-newsletter,#modal-newsletter-dialog{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "shopblisschi.com": {
+    s: "div.agp__wrapper,div.agp__background.agp__background--image,#agp__root,#agp_row{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "incendiomagicwand.com": {
+    s: "div.promo-popup.is-active.show-image,div.popup-wrapper,div.popup.center.popup-image--left,#shopify-section-sections--19232612090086__popup_pro_KtXe6n{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
 // end of const rules
 };
 
