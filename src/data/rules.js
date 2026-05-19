@@ -20678,7 +20678,7 @@ const rules = {
   },
 
   "back9botanicals.com": {
-    s: "div.search-modal.modal__content,div.popup-wrapper,div.overlay.age-verification__overlay,div.needsclick[aria-label=\"POPUP Form\"][class*=\"kl-private-reset-css\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+    s: "div.search-modal.modal__content,div.popup-wrapper,div.overlay.age-verification__overlay,div.needsclick[aria-label=\"POPUP Form\"][class*=\"kl-private-reset-css\"],.needsclick[role=\"dialog\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
   },
 
   "bloomzhemp.com": {
@@ -20862,7 +20862,7 @@ const rules = {
   },
 
   "thegreendoor.co": {
-    s: ".overlay-group-popup,.popup-main.popup-open,#agp__root,.agp__wrapper,#drv-pop-container{display:none !important}html,body{overflow:auto !important;position:static !important;height:auto !important}",
+    s: ".overlay-group-popup,.popup-main.popup-open,#agp__root,.agp__wrapper,.agp__background,#drv-pop-container{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
   },
 
   "threefivez.com": {
@@ -20870,11 +20870,11 @@ const rules = {
   },
 
   "treehouse-cbd.com": {
-    s: ".ait-newsletter-popup{display:none !important}html,body{overflow:auto !important;position:static !important;height:auto !important}",
+    s: ".ait-newsletter-popup{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
   },
 
   "yen-ology.com": {
-    s: "#agp__root,.agp__wrapper,.agp__background,#drv-pop-container,.ait-newsletter-popup{display:none !important}html,body{overflow:auto !important;position:static !important;height:auto !important}",
+    s: "#agp__root,.agp__wrapper,.agp__background,#drv-pop-container,.ait-newsletter-popup{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
   },
 
   "herbalhealerscbd.com": {
@@ -21095,6 +21095,62 @@ const rules = {
 
   "kickinithigher.com": {
     s: ".agp__wrapper,.agp__background,#agp__root{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body,.agp__frozen{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "caligreengold.com": {
+    s: "age-verifier#AgeVerifier,age-verifier#AgeVerifier overlay-element.overlay.fixed-modal,div[class*=\"omnisend-form-\"][class*=\"-container\"],div[class*=\"omnisend-form-\"][class*=\"-overlay\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "theclcornerstore.com": {
+    s: ".agp__wrapper,.agp__background,.spinWheelWrapper.dialogVisible{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "trueherbalcreations.com": {
+    s: "#gm_age_preview_img,.gm_age_overlay,.needsclick[role=\"dialog\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "wecrooze.com": {
+    s: ".agp__wrapper,.agp__background,#subscribe-modal-overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "zeedvault.com": {
+    s: "#cmg_age_preview_img,.cmg_age_overlay,shopify-forms-embed,#app-embed-container-678366,#app-embed-container-678366 *,div.needsclick[aria-label=\"POPUP Form\"],.needsclick[class*=\"kl-private-reset-css\"],.klaviyo-form,iframe#merchantwidgetiframe{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body,body.klaviyo-prevent-body-scrolling,body.cmginfotech_scroll,body[style]{overflow:auto!important;overflow-y:auto!important;position:static!important;height:auto!important;max-height:none!important;}",
+  },
+
+  "aldersonfamilyfarms.store": {
+    s: "#av-overlay-wrap{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "ascensionwellness.biz": {
+    s: "#elementor-popup-modal-523{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "aseedcompany.com": {
+    s: ".ageVerification{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "atxgrasshopper.com": {
+    s: "#av-overlay-wrap,#av-overlay-form,.needsclick[role=\"dialog\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "hemp-flower.com": {
+    s: ".agp__wrapper,.agp__background,lookbook-mobile-popup.halo-lookbook-popup-mobile,.proof-factor-cb.proof-factor-cb-overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "flowstateflowers.com": {
+    s: "#emav-overlay-wrap{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "ochoselect.com": {
+    s: "#demo.ZooomyAgemodal,.needsclick[role=\"dialog\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "oleskoolhemp.com": {
+    s: "#av-overlay-wrap{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "cbdgenesis.com": {
+    s: "autopopup-modal#AutoPopup-Newsletter,.modal-overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
   },
 
 // end of const rules
