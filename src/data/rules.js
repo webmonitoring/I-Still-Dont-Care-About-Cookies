@@ -20894,7 +20894,7 @@ const rules = {
   },
 
   "beanpatchseeds.com": {
-    s: "#age_okay_container,#age_okay_overlay,#age_okay_fix{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html{overflow:hidden!important;height:100%!important;}body,body.age_okay_body{overflow-y:auto!important;overflow-x:hidden!important;height:100vh!important;max-height:100vh!important;position:relative!important;}",
+    s: "#age_okay_container,#age_okay_overlay,#age_okay_fix,#popup-builder-3216{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,html.age_okay_body,body,body.age_okay_body{overflow:auto!important;overflow-y:auto!important;position:static!important;height:auto!important;max-height:none!important;}",
   },
 
   "relievewellness.com": {
@@ -21035,6 +21035,66 @@ const rules = {
 
   "chefmattonline.com": {
     s: "#shopify-section-sections--27534307164241__age-check,[data-modal-label=\"Age verification\"],#modals-modal,#modal-slot{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "beescannafarm.com": {
+    s: ".agp__wrapper,.agp__background,.needsclick[role=\"dialog\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "cannaraised.com": {
+    s: ".agp__wrapper,.agp__background{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "freshyhemp.com": {
+    s: ".agp__wrapper,.agp__background{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "highlandfalls.us": {
+    s: ".popup--age,.popup__wash,.needsclick[role=\"dialog\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body,body.klaviyo-prevent-body-scrolling,body[style]{overflow:auto!important;overflow-y:auto!important;position:static!important;height:auto!important;max-height:none!important;}",
+  },
+
+  "jamesloudgenetics.com": {
+    s: "#kadence-conversion-7900,.kadence-conversion-overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "jerpfarms.com": {
+    s: ".agp__wrapper,.agp__background,.omnisend-reset-693651dd5000977f50423741,.omnisend-form-693651dd5000977f50423741-overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "kushandco.com": {
+    s: "#emav-overlay-wrap,.needsclick[role=\"dialog\"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "kvcannabis.com": {
+    s: "#ageGate{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "littlerick.com": {
+    s: ".agp__wrapper,.agp__background{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "megadistribution.us": {
+    s: "pop-up#sections--20392865890382__pop_up_mRc8c4{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "penguindistro.com": {
+    s: "#cmg_age_preview_img,.cmg_age_overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "sagaponacksociety.com": {
+    s: "#cmg_age_preview_img,.cmg_age_overlay,.react-responsive-modal-root,.react-responsive-modal-overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "tattersallfunctional.com": {
+    s: "#age-parent{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "hinesnutrition.com": {
+    s: ".age-gate__wrapper,.age-gate__background,.age-gate__background-color,.age-gate{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "kickinithigher.com": {
+    s: ".agp__wrapper,.agp__background,#agp__root{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body,.agp__frozen{overflow:auto!important;position:static!important;height:auto!important;}",
   },
 
 // end of const rules
