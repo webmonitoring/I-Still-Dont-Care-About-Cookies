@@ -9,6 +9,7 @@
     "lintfix": "eslint src --fix",
     "prettier": "prettier --write .",
     "add-rule": "node tools/add-rule.js",
+    "create-feedback-rules-prompt": "bash create-feedback-rules-prompt.sh",
     "generate-block-rules": "node tools/generate-block-rules.js > src/rules.json && prettier --write src/rules.json"
   },
   "repository": {
