@@ -13,6 +13,7 @@ CODEX_MCP_PACKAGE="${CODEX_MCP_PACKAGE:-chrome-devtools-mcp@latest}"
 JUMP_HOST="${JUMP_HOST:-ec2-user@devweb.vpng.io}"
 JUMP_HOST_KEY="${JUMP_HOST_KEY:-}"
 RULES_FILE="${RULES_FILE:-src/data/rules.js}"
+CODEX_BIN=""
 
 CHECK_CHROME_MCPS=1
 FETCH_ONLY=0
@@ -107,20 +108,31 @@ done
 ensure_chrome_mcp_worker() {
   local name="$1"
 
-  if codex mcp get "$name" >/dev/null 2>&1; then
+  if "$CODEX_BIN" mcp get "$name" >/dev/null 2>&1; then
     return
   fi
 
   echo "Adding missing Codex MCP worker: ${name}" >&2
-  codex mcp add "$name" -- npx "$CODEX_MCP_PACKAGE" --headless=true --isolated=true >/dev/null
+  "$CODEX_BIN" mcp add "$name" -- npx "$CODEX_MCP_PACKAGE" --headless=true --isolated=true >/dev/null
+}
+
+ensure_codex_cli() {
+  if command -v codex >/dev/null 2>&1; then
+    CODEX_BIN="$(command -v codex)"
+    return
+  fi
+
+  if [[ -x "$SCRIPT_DIR/node_modules/.bin/codex" ]]; then
+    CODEX_BIN="$SCRIPT_DIR/node_modules/.bin/codex"
+    return
+  fi
+
+  echo "codex CLI is not installed. Run npm install, then rerun this command." >&2
+  exit 1
 }
 
 ensure_chrome_mcps() {
-  if ! command -v codex >/dev/null 2>&1; then
-    echo "codex CLI is not installed or not on PATH." >&2
-    echo "Install Codex CLI or rerun with --fetch-only --no-chrome-mcp to only fetch URLs." >&2
-    exit 1
-  fi
+  ensure_codex_cli
 
   ensure_chrome_mcp_worker "chrome-devtools-a"
   ensure_chrome_mcp_worker "chrome-devtools-b"
@@ -253,8 +265,9 @@ echo "Fetched ${URL_COUNT} feedback URL(s)." >&2
 echo "Generated Codex prompt: ${PROMPT_FILE}" >&2
 
 if [[ "$RUN_CODEX" -eq 1 ]]; then
+  ensure_codex_cli
   echo "Running Codex rule prover with generated prompt." >&2
-  codex exec --full-auto -C "$SCRIPT_DIR" - < "$PROMPT_FILE"
+  "$CODEX_BIN" exec --full-auto -C "$SCRIPT_DIR" - < "$PROMPT_FILE"
   exit
 fi
 

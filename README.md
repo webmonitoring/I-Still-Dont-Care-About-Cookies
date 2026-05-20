@@ -117,6 +117,12 @@ npm run create-feedback-rules-prompt
 
 The script checks/installs the required Chrome MCP workers, starts the local SSH tunnel if needed, connects to MySQL through `127.0.0.1:3307`, and prints a prompt from the fetched URLs so the active Codex session can deduplicate domains and generate verified rules.
 
+```bash
+npm install
+```
+
+`npm install` installs the repo-local Codex CLI dependency used by this workflow. The script uses `codex` from your `PATH` when available, otherwise it uses `node_modules/.bin/codex`.
+
 For the SSH tunnel, the script uses `~/.ssh/jump_host_key` when that file exists. Otherwise it lets SSH use your `~/.ssh/config`, ssh-agent, or default keys such as `~/.ssh/id_ed25519`. If your key has a different name, pass it explicitly:
 
 ```bash
