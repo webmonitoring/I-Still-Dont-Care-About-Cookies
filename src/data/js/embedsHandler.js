@@ -34,6 +34,13 @@
       break;
   }
 
+  // Pages that aren't one of the handled embeds have nothing to click. Returning
+  // before the guard class is added keeps the random class off <html>, so the
+  // saved HTML of every other page stays byte-identical between loads.
+  if (!isAudioboom && !isDailymotion && !isDailybuzz && !isPlayerclipslaliga) {
+    return;
+  }
+
   function searchEmbeds() {
     setTimeout(function () {
       // audioboom.com iframe embeds
