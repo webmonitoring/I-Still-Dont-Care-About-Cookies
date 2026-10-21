@@ -15541,7 +15541,7 @@ const rules = {
   },
   "posylka.de": { j: "5" },
   "europa.eu": {
-    s: "#edp-cookies-banner,.customCookie{display:none !important}",
+    s: "#edp-cookies-banner,.customCookie,#ec-survey-pop-up-overlay,#ec-survey-pop-up-container-wrapper{display:none !important}",
     j: "5",
   },
   "soundsmag.com": {
@@ -21151,6 +21151,38 @@ const rules = {
 
   "cbdgenesis.com": {
     s: "autopopup-modal#AutoPopup-Newsletter,.modal-overlay{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}html,body{overflow:auto!important;position:static!important;height:auto!important;}",
+  },
+
+  "thecaptaincbd.com": {
+    s: "#age-verification-popup{display:none !important}",
+  },
+
+  "kizmah.com": {
+    s: ".cms-popup-overlay,.modal-container[data-form][role=\"dialog\"],.js-cookie-consent{display:none !important}",
+  },
+
+  "nuuly.com": {
+    s: ".o-modal-overlay:has(> .o-modal__outer.is-styletype-fullscreen){display:none !important}html.scroll-lock,html.scroll-lock body{overflow:auto !important}.c-app.is-scroll-locked{position:static !important}",
+  },
+
+  "oriclehearing.com": {
+    s: "[id^=\"alia-root\"]{display:none !important}",
+  },
+
+  "wirebarley.com": {
+    s: "div[role=\"dialog\"][aria-modal=\"true\"].fixed.inset-0{display:none !important}",
+  },
+
+  "coinme.com": {
+    s: "#td-popup,[id^=\"cc-popup-\"],body > div[role=\"dialog\"][aria-modal=\"true\"][class*=\"popup\"]{display:none !important}",
+  },
+
+  "mephistogenetics.com": {
+    s: "#hulk_age_verify,#md-app-embed__modal,.md-modal__backdrop,.av_overlay,.needsclick[role=\"dialog\"][aria-label$=\" Form\"]{display:none !important}body.orbe--opened,body.cus_overflow{overflow:auto !important}",
+  },
+
+  "indianembassynetherlands.gov.in": {
+    s: "body > .popup,body > .popup2,#popup3,.cookies-wrapper{display:none !important}",
   },
 
 // end of const rules
