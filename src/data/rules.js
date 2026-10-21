@@ -21185,6 +21185,26 @@ const rules = {
     s: "body > .popup,body > .popup2,#popup3,.cookies-wrapper{display:none !important}",
   },
 
+  "trikomaseeds.com": {
+    s: "#surbma-yes-no-popup{display:none !important}html,body{overflow:auto !important}",
+  },
+
+  "cannabis-seeds-store.co.uk": {
+    s: "#block-vault-block-vault-disclaimer-block,.covid19-popup-overlay{display:none !important}",
+  },
+
+  "amsterdammarijuanaseeds.com": {
+    s: "body > div[role=\"dialog\"][aria-modal=\"true\"].fixed.inset-0{display:none !important}body{overflow:auto !important}",
+  },
+
+  "blimburnseeds.de": {
+    s: "#bbs-age-gate-modal,body:has(#bbs-age-gate-modal.show) > .modal-backdrop{display:none !important}body:has(#bbs-age-gate-modal.show){overflow:auto !important;padding-right:0 !important}",
+  },
+
+  "bluemoonhemp.com": {
+    s: "html.bmh-age-pending.bmh-age-pending::before{display:none !important}html.bmh-age-pending.bmh-age-pending,html.bmh-age-pending.bmh-age-pending body{overflow:auto !important}.mfp-wrap.wd-age-verify-wrap,.wd-popup.wd-age-verify,body:has(> .wd-age-verify-wrap) > .mfp-bg{display:none !important}",
+  },
+
 // end of const rules
 };
 
