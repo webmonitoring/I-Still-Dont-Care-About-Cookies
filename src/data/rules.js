@@ -214,7 +214,7 @@ const rules = {
   "messenger.com": { j: "5" },
   "instagram.com": { j: "5" },
   "linkedin.com": {
-    s: '#js-notification-wrapper[role="alert"],.global-alert.global-alert--yield,#global-alert-queue,#artdeco-global-alert-container,.alert,#alert{display:none !important}',
+    s: '[data-testid="global-alerts-title"]:has(a[href*="/legal/cookie-policy/"],a[href*="/settings/member-cookies/"]) { display: none !important; }',
   },
   "twitter.com": {
     j: "5",
@@ -4590,7 +4590,7 @@ const rules = {
   "canadacomputers.com": { s: ".privacy-modal{display:none !important}" },
   "alivecolors.com": { c: 10 },
   "goodvibes.com": { s: "#bottomAlert{display:none !important}" },
-  "asnbank.nl": { j: "5" },
+  "asnbank.nl": { s: "#cookieconsent { display: none !important; }" },
   "red-carparts.de": { c: 8 },
   "carlovalentini.it": { s: "#footer-widget-area{display:none !important}" },
   "streamcraft.com": { s: ".privacy-wraper{display:none !important}" },
