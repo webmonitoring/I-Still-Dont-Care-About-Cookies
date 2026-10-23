@@ -11435,7 +11435,10 @@ const rules = {
   "mapillary.com": { j: "5" },
   "voltus.de": { s: "#c4sCookieOneClickModal{display:none !important}" },
   "123rf.com": { s: ".AgreementBanner__wrapper{display:none !important}" },
-  "smythstoys.com": { j: "5" },
+  "smythstoys.com": {
+    j: "5",
+    s: '#app-content > div.fixed.inset-0:has([aria-labelledby="cookie-modal-title"]){display:none !important}body.overflow-hidden:has([aria-labelledby="cookie-modal-title"]){overflow:auto !important}',
+  },
   "ccoo.es": { j: "5" },
   "istockphoto.com": { s: ".banner.warning{display:none !important}" },
   "airtel.com": { c: 155 },
@@ -12309,7 +12312,7 @@ const rules = {
   "dr-gumpert.de": { s: "#cookie_modal_container{display:none !important}" },
   "lego.com": {
     j: "5",
-    s: 'div[class*="CookieDisclaimer"],#footer ~ [class*="emotion-cache"],#prompt-footer{display:none !important}',
+    s: 'div[class*="CookieDisclaimer"],#footer ~ [class*="emotion-cache"],#prompt-footer,dialog[data-test="age-gate-overlay"]{display:none !important}',
   },
   "ahaan.co.uk": { c: 24 },
   "bascom-kameras.de": { j: "5" },
@@ -13721,7 +13724,10 @@ const rules = {
     s: "#cookieModuleModal{display:none !important}",
     c: 14,
   },
-  "etsy.com": { j: "5", s: ".wt-alert--fixed-bottom{display:none !important}" },
+  "etsy.com": {
+    j: "5",
+    s: '.wt-alert--fixed-bottom,[data-selector="privacy-cookie-banner-container"],#privacy_cookie_banner_element,[data-gdpr-consent-prompt]{display:none !important}',
+  },
   "so.energy": { j: "5" },
   "interactivebrokers.com": { c: 20 },
   "interactivebrokers.co.uk": { c: 20 },
@@ -21203,6 +21209,42 @@ const rules = {
 
   "bluemoonhemp.com": {
     s: "html.bmh-age-pending.bmh-age-pending::before{display:none !important}html.bmh-age-pending.bmh-age-pending,html.bmh-age-pending.bmh-age-pending body{overflow:auto !important}.mfp-wrap.wd-age-verify-wrap,.wd-popup.wd-age-verify,body:has(> .wd-age-verify-wrap) > .mfp-bg{display:none !important}",
+  },
+
+  "canada.ca": {
+    s: "#gc-im-popup{display:none !important}",
+  },
+
+  "streeteasy.com": {
+    s: ".ReactModalPortal:has([aria-labelledby=\"total-monthly-price-modal-title\"]){display:none !important}body.ReactModal__Body--open:has([aria-labelledby=\"total-monthly-price-modal-title\"]){overflow:auto !important}",
+  },
+
+  "plaza.newnewnew.space": {
+    s: "#CybotCookiebotDialog,#CybotCookiebotDialogBodyUnderlay{display:none !important}",
+  },
+
+  "parliament.uk": {
+    s: "#p-cookie-banner,#p-cookie-modal__overlay,#p-cookie-modal{display:none !important}",
+  },
+
+  "the110.co": {
+    s: "newsletter-popup.newsletter-popup{display:none !important}body:has(newsletter-popup[open]){overflow:auto !important}",
+  },
+
+  "finewineandgoodspirits.com": {
+    s: ".modal:has(.age-gate__container),body:has(.age-gate__container) .modal-backdrop,#ltkpopup-overlay,#ltkpopup-container,listrak-popup,listrak-popup-inner{display:none !important}body:has(.age-gate__container),body:has(#ltkpopup-container){overflow:auto !important}",
+  },
+
+  "windsorstore.com": {
+    s: "#ltkpopup-overlay,#ltkpopup-container,listrak-popup,listrak-popup-inner{display:none !important}body:has(listrak-popup[open]){overflow:auto !important}",
+  },
+
+  "victoriassecret.com": {
+    s: "section[data-testid=\"dialog-container\"]:has([data-testid=\"email-acq-popup\"]){display:none !important}",
+  },
+
+  "target.com": {
+    s: "body > [data-floating-ui-portal]:has(> [class^=\"styles_overlay__\"] [aria-modal=\"true\"]){display:none !important}body:has(> [data-floating-ui-portal] > [class^=\"styles_overlay__\"] [aria-modal=\"true\"]){overflow:auto !important}",
   },
 
 // end of const rules
