@@ -10371,7 +10371,9 @@ const rules = {
   "pickup.de": { j: "5" },
   "estadao.com.br": { s: ".lgpd-modal-content{display:none !important}" },
   "evarazdin.hr": { j: "5" },
-  "gc.ca": { s: ".CookieModal{display:none !important}" },
+  "gc.ca": {
+    s: ".CookieModal,#gc-im-popup,#first-focus:has(> a[href$=\"#gc-im-popup\"]){display:none !important}",
+  },
   "5miles.com": { j: "5" },
   "okpedia.org": { c: 16 },
   "lizak-partner.at": { j: "5" },
@@ -21212,7 +21214,7 @@ const rules = {
   },
 
   "canada.ca": {
-    s: "#gc-im-popup{display:none !important}",
+    s: "#gc-im-popup,#first-focus:has(> a[href$=\"#gc-im-popup\"]){display:none !important}",
   },
 
   "streeteasy.com": {
@@ -21245,6 +21247,38 @@ const rules = {
 
   "target.com": {
     s: "body > [data-floating-ui-portal]:has(> [class^=\"styles_overlay__\"] [aria-modal=\"true\"]){display:none !important}body:has(> [data-floating-ui-portal] > [class^=\"styles_overlay__\"] [aria-modal=\"true\"]){overflow:auto !important}",
+  },
+
+  "realgorillaseeds.com": {
+    s: ".age-gate-wrapper{display:none !important}html.age-gate__restricted,body.age-restriction{overflow:auto !important}",
+  },
+
+  "securityhealth.org": {
+    s: ".sqm-pop{display:none !important}",
+  },
+
+  "graniteshares.com": {
+    s: "#hs-interactives-modal-overlay,[id^=\"hs-overlay-cta-\"]{display:none !important}body:has(#hs-interactives-modal-overlay){overflow:auto !important}",
+  },
+
+  "nflshop.com": {
+    s: ".react-aria-ModalOverlay:has(.aspire-sliver-text-based-modal){display:none !important}",
+  },
+
+  "rhodeskin.com": {
+    s: "#ps__widget_container{display:none !important}body.ps-scroll-lock{overflow:auto !important}",
+  },
+
+  "yescarta.com": {
+    s: "#onetrust-consent-sdk{display:none !important}",
+  },
+
+  "bamko.net": {
+    s: ".cky-consent-container,.cky-modal-backdrop,.cky-overlay,.cky-btn-revisit-wrapper{display:none !important}",
+  },
+
+  "sabadell.cat": {
+    s: ".tm-consent{display:none !important}",
   },
 
 // end of const rules
