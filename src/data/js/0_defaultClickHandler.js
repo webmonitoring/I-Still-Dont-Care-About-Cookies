@@ -597,7 +597,7 @@
 		.disable--interaction .cm__btn[data-role=necessary],\
 		div[consent-skip-blocker] dialog[open] a[role="button"]:not([id$="-ext-0-255"]):not([class*="ext-1-414"]),\
 		div.consents .consents__wrapper .consents__modal .consents__buttons .js__accept-necessary,\
-		.wcc-consent-container .wcc-btn-reject,\
+		.wcc-consent-container:not(.wcc-hide) .wcc-btn-reject,\
 		div[class*="age-gate"]:not([style*="none"]) button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"]),\
 		div[id*="age-gate"]:not([style*="none"]) button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"]),\
 		div[class*="age-verif"]:not([style*="none"]) button:not([class*="close"]):not([class*="cancel"]):not([class*="decline"]):not([class*="no"]):not([class*="deny"]):not([class*="search"]),\
